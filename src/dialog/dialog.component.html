@@ -1,0 +1,60 @@
+<form [formGroup]="assForm" (ngSubmit)="onadd()">
+    <mat-card class="assignment-form">
+      <mat-card-header>
+        <mat-card-title>Submit Assignment</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Assignment Name" formControlName="assignmentName">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Select a Class</mat-label>
+              <mat-select formControlName="class">
+                <mat-option *ngFor="let classes of class" [value]="classes">{{classes}}</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Select Assignment Type</mat-label>
+              <mat-select formControlName="type">
+                <mat-option *ngFor="let types of type" [value]="types">{{types}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Assignment URL (optional)</mat-label>
+              <input matInput placeholder="Link to relevant resource" formControlName="url">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Due Date</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit Assignment</button>
+        <button mat-raised-button color="secondary" >cancel</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
