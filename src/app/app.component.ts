@@ -11,9 +11,10 @@ import { AssignmnentSService } from '../assignmnent-s.service';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CoreService } from '../core.service';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 
 
-export interface MatTableDataSource {
+export interface Assignment {
     assignmentName: 'string',
     class: 'string',
     type: 'string',
@@ -28,14 +29,14 @@ export interface MatTableDataSource {
   standalone: true,
   imports: [
     RouterOutlet,
-    MatToolbarModule, 
+    MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     DialogComponent,
     MatInputModule,
     MatFormFieldModule,
     MatPaginator,
-    
+    MatTableModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -48,8 +49,8 @@ export class AppComponent {
     'url',
     'dueDate'
   ];
-  
-  dataSource!: MatTableDataSource<any>;
+
+  dataSource!: MatTableDataSource<Assignment>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -64,7 +65,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.getassignmentlist();
   }
-  
+
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
 
@@ -84,7 +85,7 @@ export class AppComponent {
       error: console.error, // Handle errors appropriately
     });
   }
-  
+
 
 
 applyFilter(event: Event) {
