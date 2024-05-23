@@ -1,0 +1,33 @@
+{
+    "assignments":[
+         {
+           "assignmentName": "Review Founding Documents",
+           "url": "NOT_A_REAL_LINK",
+           "class": "government",
+           "type": "worksheet",
+           "dueDate": "2024-06-07"
+         },
+         {
+           "assignmentName": "Prepare for Supreme Court Case Study",
+           "url": "NOT_A_REAL_LINK",
+           "class": "government",
+           "type": "project",
+           "dueDate": "2024-06-14"
+         },
+         {
+           "assignmentName": "Catch Up on Current Events",
+           "url": "NOT_A_REAL_LINK",
+           "class": "study_hall",
+           "type": "notes",
+           "dueDate": "2024-06-04"
+         },
+         {
+           "assignmentName": "Organize Study Materials",
+           "url": "NOT_A_REAL_LINK",
+           "class": "study_hall",
+           "type": "vocab",
+           "dueDate": "2024-06-11"
+         }
+   
+       ]
+     }

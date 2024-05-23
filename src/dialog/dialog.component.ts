@@ -37,7 +37,7 @@ export class DialogComponent {
     private coreService: CoreService,
 
     @Inject(MAT_DIALOG_DATA) public data: any,
-    // private _coreService: CoreService
+    
   ) {
     this.assForm = this.fb.group({
       assignmentName: '',
@@ -73,7 +73,7 @@ export class DialogComponent {
   onadd() {
     if (this.assForm.valid) {
       this.assService.addassignment(this.assForm.value).subscribe({
-        next: (val: any) =>{
+        next: (_val: any) =>{
           alert('assignement added');
           this.dialogRef.close()
         },
@@ -84,7 +84,7 @@ export class DialogComponent {
     }
     else {
       this.assService.addassignment(this.assForm.value).subscribe({
-        next: (val: any) => {
+        next: (_val: any) => {
           this.coreService.openSnackBar('Employee added successfully');
           this.dialogRef.close(true);
         },

@@ -6,7 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { AssignmnentSService } from '../assignmnent-s.service';
 import {MatInputModule} from '@angular/material/input';
@@ -14,6 +13,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CoreService } from '../core.service';
 
 
+export interface MatTableDataSource {
+    assignmentName: 'string',
+    class: 'string',
+    type: 'string',
+    url: 'string',
+    dueDate: 'string',
+}
 
 
 
@@ -42,6 +48,7 @@ export class AppComponent {
     'url',
     'dueDate'
   ];
+  
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -57,6 +64,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.getassignmentlist();
   }
+  
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
 
@@ -66,16 +74,17 @@ export class AppComponent {
   }
 
 
-  getassignmentlist(){
+  getassignmentlist() {
     this.assService.getassignmentlist().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       },
-      error: console.log,
-    })
+      error: console.error, // Handle errors appropriately
+    });
   }
+  
 
 
 applyFilter(event: Event) {
